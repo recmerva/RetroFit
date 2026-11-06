@@ -21,7 +21,9 @@ internal sealed class GradKonfiguracija : IEntityTypeConfiguration<Grad>
         });
         b.HasKey(g => g.Id);
         b.Property(g => g.Id).ValueGeneratedNever();
-        b.Tekst(g => g.Naziv, 100);
+        // Srpska kolacija: ORDER BY Naziv poštuje redosled latinice (C, Č, Ć, D, Dž, Đ...),
+        // a ne zapadnoevropski, gde bi "Čačak" bio izmešan sa nazivima na C.
+        b.Tekst(g => g.Naziv, 100).UseCollation("Serbian_Latin_100_CI_AS");
         b.Tekst(g => g.PostanskiBroj, 10).IsUnicode(false);
         b.HasIndex(g => g.Naziv).IsUnique().HasDatabaseName("UX_Gradovi_Naziv");
 

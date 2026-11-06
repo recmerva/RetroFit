@@ -586,7 +586,8 @@ namespace RetroFit.Infrastructure.Persistencija.Migracije
                     b.Property<string>("Naziv")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(100)")
+                        .UseCollation("Serbian_Latin_100_CI_AS");
 
                     b.Property<string>("PostanskiBroj")
                         .IsRequired()
@@ -859,6 +860,1122 @@ namespace RetroFit.Infrastructure.Persistencija.Migracije
                             Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.2233 44.5333)"),
                             Naziv = "Loznica",
                             PostanskiBroj = "15300"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            GeografskaDuzina = 20.4161,
+                            GeografskaSirina = 44.578600000000002,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.4161 44.5786)"),
+                            Naziv = "Barajevo",
+                            PostanskiBroj = "11460"
+                        },
+                        new
+                        {
+                            Id = 30,
+                            GeografskaDuzina = 20.717199999999998,
+                            GeografskaSirina = 44.671399999999998,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.7172 44.6714)"),
+                            Naziv = "Grocka",
+                            PostanskiBroj = "11306"
+                        },
+                        new
+                        {
+                            Id = 31,
+                            GeografskaDuzina = 20.256399999999999,
+                            GeografskaSirina = 44.380299999999998,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.2564 44.3803)"),
+                            Naziv = "Lazarevac",
+                            PostanskiBroj = "11550"
+                        },
+                        new
+                        {
+                            Id = 32,
+                            GeografskaDuzina = 20.696899999999999,
+                            GeografskaSirina = 44.438099999999999,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.6969 44.4381)"),
+                            Naziv = "Mladenovac",
+                            PostanskiBroj = "11400"
+                        },
+                        new
+                        {
+                            Id = 33,
+                            GeografskaDuzina = 20.199999999999999,
+                            GeografskaSirina = 44.655000000000001,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.2 44.655)"),
+                            Naziv = "Obrenovac",
+                            PostanskiBroj = "11500"
+                        },
+                        new
+                        {
+                            Id = 34,
+                            GeografskaDuzina = 20.575299999999999,
+                            GeografskaSirina = 44.519399999999997,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.5753 44.5194)"),
+                            Naziv = "Sopot",
+                            PostanskiBroj = "11450"
+                        },
+                        new
+                        {
+                            Id = 35,
+                            GeografskaDuzina = 20.2803,
+                            GeografskaSirina = 44.793100000000003,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.2803 44.7931)"),
+                            Naziv = "Surčin",
+                            PostanskiBroj = "11271"
+                        },
+                        new
+                        {
+                            Id = 36,
+                            GeografskaDuzina = 19.635000000000002,
+                            GeografskaSirina = 45.814999999999998,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.635 45.815)"),
+                            Naziv = "Bačka Topola",
+                            PostanskiBroj = "24300"
+                        },
+                        new
+                        {
+                            Id = 37,
+                            GeografskaDuzina = 19.664999999999999,
+                            GeografskaSirina = 45.7072,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.665 45.7072)"),
+                            Naziv = "Mali Iđoš",
+                            PostanskiBroj = "24321"
+                        },
+                        new
+                        {
+                            Id = 38,
+                            GeografskaDuzina = 20.1356,
+                            GeografskaSirina = 45.596699999999998,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.1356 45.5967)"),
+                            Naziv = "Novi Bečej",
+                            PostanskiBroj = "23272"
+                        },
+                        new
+                        {
+                            Id = 39,
+                            GeografskaDuzina = 20.6053,
+                            GeografskaSirina = 45.668300000000002,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.6053 45.6683)"),
+                            Naziv = "Nova Crnja",
+                            PostanskiBroj = "23218"
+                        },
+                        new
+                        {
+                            Id = 40,
+                            GeografskaDuzina = 20.550000000000001,
+                            GeografskaSirina = 45.484999999999999,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.55 45.485)"),
+                            Naziv = "Žitište",
+                            PostanskiBroj = "23210"
+                        },
+                        new
+                        {
+                            Id = 41,
+                            GeografskaDuzina = 20.772500000000001,
+                            GeografskaSirina = 45.366900000000001,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.7725 45.3669)"),
+                            Naziv = "Sečanj",
+                            PostanskiBroj = "23240"
+                        },
+                        new
+                        {
+                            Id = 42,
+                            GeografskaDuzina = 20.128900000000002,
+                            GeografskaSirina = 45.802799999999998,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.1289 45.8028)"),
+                            Naziv = "Ada",
+                            PostanskiBroj = "24430"
+                        },
+                        new
+                        {
+                            Id = 43,
+                            GeografskaDuzina = 20.077200000000001,
+                            GeografskaSirina = 45.927500000000002,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.0772 45.9275)"),
+                            Naziv = "Senta",
+                            PostanskiBroj = "24400"
+                        },
+                        new
+                        {
+                            Id = 44,
+                            GeografskaDuzina = 20.050000000000001,
+                            GeografskaSirina = 46.066699999999997,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.05 46.0667)"),
+                            Naziv = "Kanjiža",
+                            PostanskiBroj = "24420"
+                        },
+                        new
+                        {
+                            Id = 45,
+                            GeografskaDuzina = 20.100000000000001,
+                            GeografskaSirina = 46.049999999999997,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.1 46.05)"),
+                            Naziv = "Novi Kneževac",
+                            PostanskiBroj = "23330"
+                        },
+                        new
+                        {
+                            Id = 46,
+                            GeografskaDuzina = 20.1433,
+                            GeografskaSirina = 45.9422,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.1433 45.9422)"),
+                            Naziv = "Čoka",
+                            PostanskiBroj = "23320"
+                        },
+                        new
+                        {
+                            Id = 47,
+                            GeografskaDuzina = 21.417200000000001,
+                            GeografskaSirina = 44.897500000000001,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.4172 44.8975)"),
+                            Naziv = "Bela Crkva",
+                            PostanskiBroj = "26340"
+                        },
+                        new
+                        {
+                            Id = 48,
+                            GeografskaDuzina = 20.621400000000001,
+                            GeografskaSirina = 45.111699999999999,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.6214 45.1117)"),
+                            Naziv = "Kovačica",
+                            PostanskiBroj = "26210"
+                        },
+                        new
+                        {
+                            Id = 49,
+                            GeografskaDuzina = 20.976099999999999,
+                            GeografskaSirina = 44.747500000000002,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.9761 44.7475)"),
+                            Naziv = "Kovin",
+                            PostanskiBroj = "26220"
+                        },
+                        new
+                        {
+                            Id = 50,
+                            GeografskaDuzina = 20.965800000000002,
+                            GeografskaSirina = 45.080800000000004,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.9658 45.0808)"),
+                            Naziv = "Alibunar",
+                            PostanskiBroj = "26310"
+                        },
+                        new
+                        {
+                            Id = 51,
+                            GeografskaDuzina = 20.430299999999999,
+                            GeografskaSirina = 45.052199999999999,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.4303 45.0522)"),
+                            Naziv = "Opovo",
+                            PostanskiBroj = "26204"
+                        },
+                        new
+                        {
+                            Id = 52,
+                            GeografskaDuzina = 21.121700000000001,
+                            GeografskaSirina = 45.226900000000001,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.1217 45.2269)"),
+                            Naziv = "Plandište",
+                            PostanskiBroj = "26360"
+                        },
+                        new
+                        {
+                            Id = 53,
+                            GeografskaDuzina = 18.984999999999999,
+                            GeografskaSirina = 45.671100000000003,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (18.985 45.6711)"),
+                            Naziv = "Apatin",
+                            PostanskiBroj = "25260"
+                        },
+                        new
+                        {
+                            Id = 54,
+                            GeografskaDuzina = 19.527200000000001,
+                            GeografskaSirina = 45.6083,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.5272 45.6083)"),
+                            Naziv = "Kula",
+                            PostanskiBroj = "25230"
+                        },
+                        new
+                        {
+                            Id = 55,
+                            GeografskaDuzina = 19.261099999999999,
+                            GeografskaSirina = 45.508299999999998,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.2611 45.5083)"),
+                            Naziv = "Odžaci",
+                            PostanskiBroj = "25250"
+                        },
+                        new
+                        {
+                            Id = 56,
+                            GeografskaDuzina = 19.238299999999999,
+                            GeografskaSirina = 45.3919,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.2383 45.3919)"),
+                            Naziv = "Bač",
+                            PostanskiBroj = "21420"
+                        },
+                        new
+                        {
+                            Id = 57,
+                            GeografskaDuzina = 19.3917,
+                            GeografskaSirina = 45.25,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.3917 45.25)"),
+                            Naziv = "Bačka Palanka",
+                            PostanskiBroj = "21400"
+                        },
+                        new
+                        {
+                            Id = 58,
+                            GeografskaDuzina = 19.591699999999999,
+                            GeografskaSirina = 45.359999999999999,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.5917 45.36)"),
+                            Naziv = "Bački Petrovac",
+                            PostanskiBroj = "21470"
+                        },
+                        new
+                        {
+                            Id = 59,
+                            GeografskaDuzina = 20.033300000000001,
+                            GeografskaSirina = 45.616700000000002,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.0333 45.6167)"),
+                            Naziv = "Bečej",
+                            PostanskiBroj = "21220"
+                        },
+                        new
+                        {
+                            Id = 60,
+                            GeografskaDuzina = 19.720800000000001,
+                            GeografskaSirina = 45.208300000000001,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.7208 45.2083)"),
+                            Naziv = "Beočin",
+                            PostanskiBroj = "21300"
+                        },
+                        new
+                        {
+                            Id = 61,
+                            GeografskaDuzina = 19.640799999999999,
+                            GeografskaSirina = 45.571399999999997,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.6408 45.5714)"),
+                            Naziv = "Vrbas",
+                            PostanskiBroj = "21460"
+                        },
+                        new
+                        {
+                            Id = 62,
+                            GeografskaDuzina = 20.0639,
+                            GeografskaSirina = 45.372199999999999,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.0639 45.3722)"),
+                            Naziv = "Žabalj",
+                            PostanskiBroj = "21230"
+                        },
+                        new
+                        {
+                            Id = 63,
+                            GeografskaDuzina = 19.791699999999999,
+                            GeografskaSirina = 45.5486,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.7917 45.5486)"),
+                            Naziv = "Srbobran",
+                            PostanskiBroj = "21480"
+                        },
+                        new
+                        {
+                            Id = 64,
+                            GeografskaDuzina = 19.934200000000001,
+                            GeografskaSirina = 45.202500000000001,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.9342 45.2025)"),
+                            Naziv = "Sremski Karlovci",
+                            PostanskiBroj = "21205"
+                        },
+                        new
+                        {
+                            Id = 65,
+                            GeografskaDuzina = 19.886700000000001,
+                            GeografskaSirina = 45.408299999999997,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.8867 45.4083)"),
+                            Naziv = "Temerin",
+                            PostanskiBroj = "21235"
+                        },
+                        new
+                        {
+                            Id = 66,
+                            GeografskaDuzina = 20.2944,
+                            GeografskaSirina = 45.206099999999999,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.2944 45.2061)"),
+                            Naziv = "Titel",
+                            PostanskiBroj = "21240"
+                        },
+                        new
+                        {
+                            Id = 67,
+                            GeografskaDuzina = 19.226400000000002,
+                            GeografskaSirina = 45.128300000000003,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.2264 45.1283)"),
+                            Naziv = "Šid",
+                            PostanskiBroj = "22240"
+                        },
+                        new
+                        {
+                            Id = 68,
+                            GeografskaDuzina = 20.081700000000001,
+                            GeografskaSirina = 45.048099999999998,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.0817 45.0481)"),
+                            Naziv = "Inđija",
+                            PostanskiBroj = "22320"
+                        },
+                        new
+                        {
+                            Id = 69,
+                            GeografskaDuzina = 19.8583,
+                            GeografskaSirina = 45.1006,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.8583 45.1006)"),
+                            Naziv = "Irig",
+                            PostanskiBroj = "22406"
+                        },
+                        new
+                        {
+                            Id = 70,
+                            GeografskaDuzina = 19.822199999999999,
+                            GeografskaSirina = 45.008099999999999,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.8222 45.0081)"),
+                            Naziv = "Ruma",
+                            PostanskiBroj = "22400"
+                        },
+                        new
+                        {
+                            Id = 71,
+                            GeografskaDuzina = 20.160799999999998,
+                            GeografskaSirina = 44.984999999999999,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.1608 44.985)"),
+                            Naziv = "Stara Pazova",
+                            PostanskiBroj = "22300"
+                        },
+                        new
+                        {
+                            Id = 72,
+                            GeografskaDuzina = 19.965599999999998,
+                            GeografskaSirina = 44.908900000000003,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.9656 44.9089)"),
+                            Naziv = "Pećinci",
+                            PostanskiBroj = "22410"
+                        },
+                        new
+                        {
+                            Id = 73,
+                            GeografskaDuzina = 19.480799999999999,
+                            GeografskaSirina = 44.837499999999999,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.4808 44.8375)"),
+                            Naziv = "Bogatić",
+                            PostanskiBroj = "15350"
+                        },
+                        new
+                        {
+                            Id = 74,
+                            GeografskaDuzina = 19.785599999999999,
+                            GeografskaSirina = 44.613599999999998,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.7856 44.6136)"),
+                            Naziv = "Vladimirci",
+                            PostanskiBroj = "15225"
+                        },
+                        new
+                        {
+                            Id = 75,
+                            GeografskaDuzina = 19.823599999999999,
+                            GeografskaSirina = 44.470799999999997,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.8236 44.4708)"),
+                            Naziv = "Koceljeva",
+                            PostanskiBroj = "15220"
+                        },
+                        new
+                        {
+                            Id = 76,
+                            GeografskaDuzina = 19.1067,
+                            GeografskaSirina = 44.3733,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.1067 44.3733)"),
+                            Naziv = "Mali Zvornik",
+                            PostanskiBroj = "15318"
+                        },
+                        new
+                        {
+                            Id = 77,
+                            GeografskaDuzina = 19.362200000000001,
+                            GeografskaSirina = 44.366700000000002,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.3622 44.3667)"),
+                            Naziv = "Krupanj",
+                            PostanskiBroj = "15314"
+                        },
+                        new
+                        {
+                            Id = 78,
+                            GeografskaDuzina = 19.372199999999999,
+                            GeografskaSirina = 44.187199999999997,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.3722 44.1872)"),
+                            Naziv = "Ljubovija",
+                            PostanskiBroj = "15320"
+                        },
+                        new
+                        {
+                            Id = 79,
+                            GeografskaDuzina = 19.601400000000002,
+                            GeografskaSirina = 44.372799999999998,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.6014 44.3728)"),
+                            Naziv = "Osečina",
+                            PostanskiBroj = "14253"
+                        },
+                        new
+                        {
+                            Id = 80,
+                            GeografskaDuzina = 20.073899999999998,
+                            GeografskaSirina = 44.456099999999999,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.0739 44.4561)"),
+                            Naziv = "Ub",
+                            PostanskiBroj = "14210"
+                        },
+                        new
+                        {
+                            Id = 81,
+                            GeografskaDuzina = 20.164999999999999,
+                            GeografskaSirina = 44.371099999999998,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.165 44.3711)"),
+                            Naziv = "Lajkovac",
+                            PostanskiBroj = "14224"
+                        },
+                        new
+                        {
+                            Id = 82,
+                            GeografskaDuzina = 20.081900000000001,
+                            GeografskaSirina = 44.252200000000002,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.0819 44.2522)"),
+                            Naziv = "Mionica",
+                            PostanskiBroj = "14242"
+                        },
+                        new
+                        {
+                            Id = 83,
+                            GeografskaDuzina = 20.2394,
+                            GeografskaSirina = 44.226399999999998,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.2394 44.2264)"),
+                            Naziv = "Ljig",
+                            PostanskiBroj = "14240"
+                        },
+                        new
+                        {
+                            Id = 84,
+                            GeografskaDuzina = 20.9589,
+                            GeografskaSirina = 44.365299999999998,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.9589 44.3653)"),
+                            Naziv = "Smederevska Palanka",
+                            PostanskiBroj = "11420"
+                        },
+                        new
+                        {
+                            Id = 85,
+                            GeografskaDuzina = 21.075600000000001,
+                            GeografskaSirina = 44.333599999999997,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.0756 44.3336)"),
+                            Naziv = "Velika Plana",
+                            PostanskiBroj = "11320"
+                        },
+                        new
+                        {
+                            Id = 86,
+                            GeografskaDuzina = 21.516400000000001,
+                            GeografskaSirina = 44.7639,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.5164 44.7639)"),
+                            Naziv = "Veliko Gradište",
+                            PostanskiBroj = "12220"
+                        },
+                        new
+                        {
+                            Id = 87,
+                            GeografskaDuzina = 21.631699999999999,
+                            GeografskaSirina = 44.653100000000002,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.6317 44.6531)"),
+                            Naziv = "Golubac",
+                            PostanskiBroj = "12223"
+                        },
+                        new
+                        {
+                            Id = 88,
+                            GeografskaDuzina = 21.288900000000002,
+                            GeografskaSirina = 44.562199999999997,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.2889 44.5622)"),
+                            Naziv = "Malo Crniće",
+                            PostanskiBroj = "12311"
+                        },
+                        new
+                        {
+                            Id = 89,
+                            GeografskaDuzina = 21.214700000000001,
+                            GeografskaSirina = 44.356099999999998,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.2147 44.3561)"),
+                            Naziv = "Žabari",
+                            PostanskiBroj = "12374"
+                        },
+                        new
+                        {
+                            Id = 90,
+                            GeografskaDuzina = 21.4192,
+                            GeografskaSirina = 44.378599999999999,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.4192 44.3786)"),
+                            Naziv = "Petrovac na Mlavi",
+                            PostanskiBroj = "12300"
+                        },
+                        new
+                        {
+                            Id = 91,
+                            GeografskaDuzina = 21.671399999999998,
+                            GeografskaSirina = 44.479399999999998,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.6714 44.4794)"),
+                            Naziv = "Kučevo",
+                            PostanskiBroj = "12240"
+                        },
+                        new
+                        {
+                            Id = 92,
+                            GeografskaDuzina = 21.789400000000001,
+                            GeografskaSirina = 44.197800000000001,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.7894 44.1978)"),
+                            Naziv = "Žagubica",
+                            PostanskiBroj = "12320"
+                        },
+                        new
+                        {
+                            Id = 93,
+                            GeografskaDuzina = 20.559999999999999,
+                            GeografskaSirina = 44.306899999999999,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.56 44.3069)"),
+                            Naziv = "Aranđelovac",
+                            PostanskiBroj = "34300"
+                        },
+                        new
+                        {
+                            Id = 94,
+                            GeografskaDuzina = 20.682500000000001,
+                            GeografskaSirina = 44.254399999999997,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.6825 44.2544)"),
+                            Naziv = "Topola",
+                            PostanskiBroj = "34310"
+                        },
+                        new
+                        {
+                            Id = 95,
+                            GeografskaDuzina = 20.983899999999998,
+                            GeografskaSirina = 44.227499999999999,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.9839 44.2275)"),
+                            Naziv = "Rača",
+                            PostanskiBroj = "34210"
+                        },
+                        new
+                        {
+                            Id = 96,
+                            GeografskaDuzina = 21.081099999999999,
+                            GeografskaSirina = 44.153100000000002,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.0811 44.1531)"),
+                            Naziv = "Batočina",
+                            PostanskiBroj = "34227"
+                        },
+                        new
+                        {
+                            Id = 97,
+                            GeografskaDuzina = 20.718599999999999,
+                            GeografskaSirina = 43.923299999999998,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.7186 43.9233)"),
+                            Naziv = "Knić",
+                            PostanskiBroj = "34240"
+                        },
+                        new
+                        {
+                            Id = 98,
+                            GeografskaDuzina = 21.100300000000001,
+                            GeografskaSirina = 44.184199999999997,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.1003 44.1842)"),
+                            Naziv = "Lapovo",
+                            PostanskiBroj = "34220"
+                        },
+                        new
+                        {
+                            Id = 99,
+                            GeografskaDuzina = 21.370000000000001,
+                            GeografskaSirina = 43.927500000000002,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.37 43.9275)"),
+                            Naziv = "Ćuprija",
+                            PostanskiBroj = "35230"
+                        },
+                        new
+                        {
+                            Id = 100,
+                            GeografskaDuzina = 21.407800000000002,
+                            GeografskaSirina = 43.860799999999998,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.4078 43.8608)"),
+                            Naziv = "Paraćin",
+                            PostanskiBroj = "35250"
+                        },
+                        new
+                        {
+                            Id = 101,
+                            GeografskaDuzina = 21.194700000000001,
+                            GeografskaSirina = 44.234200000000001,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.1947 44.2342)"),
+                            Naziv = "Svilajnac",
+                            PostanskiBroj = "35210"
+                        },
+                        new
+                        {
+                            Id = 102,
+                            GeografskaDuzina = 21.442499999999999,
+                            GeografskaSirina = 44.093600000000002,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.4425 44.0936)"),
+                            Naziv = "Despotovac",
+                            PostanskiBroj = "35213"
+                        },
+                        new
+                        {
+                            Id = 103,
+                            GeografskaDuzina = 21.093900000000001,
+                            GeografskaSirina = 43.8628,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.0939 43.8628)"),
+                            Naziv = "Rekovac",
+                            PostanskiBroj = "35260"
+                        },
+                        new
+                        {
+                            Id = 104,
+                            GeografskaDuzina = 22.6142,
+                            GeografskaSirina = 44.606099999999998,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (22.6142 44.6061)"),
+                            Naziv = "Kladovo",
+                            PostanskiBroj = "19320"
+                        },
+                        new
+                        {
+                            Id = 105,
+                            GeografskaDuzina = 21.935600000000001,
+                            GeografskaSirina = 44.421399999999998,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.9356 44.4214)"),
+                            Naziv = "Majdanpek",
+                            PostanskiBroj = "19250"
+                        },
+                        new
+                        {
+                            Id = 106,
+                            GeografskaDuzina = 22.530799999999999,
+                            GeografskaSirina = 44.226399999999998,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (22.5308 44.2264)"),
+                            Naziv = "Negotin",
+                            PostanskiBroj = "19300"
+                        },
+                        new
+                        {
+                            Id = 107,
+                            GeografskaDuzina = 21.9514,
+                            GeografskaSirina = 43.830300000000001,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.9514 43.8303)"),
+                            Naziv = "Boljevac",
+                            PostanskiBroj = "19370"
+                        },
+                        new
+                        {
+                            Id = 108,
+                            GeografskaDuzina = 22.2575,
+                            GeografskaSirina = 43.566400000000002,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (22.2575 43.5664)"),
+                            Naziv = "Knjaževac",
+                            PostanskiBroj = "19350"
+                        },
+                        new
+                        {
+                            Id = 109,
+                            GeografskaDuzina = 21.871099999999998,
+                            GeografskaSirina = 43.643099999999997,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.8711 43.6431)"),
+                            Naziv = "Sokobanja",
+                            PostanskiBroj = "18230"
+                        },
+                        new
+                        {
+                            Id = 110,
+                            GeografskaDuzina = 19.567499999999999,
+                            GeografskaSirina = 43.970799999999997,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.5675 43.9708)"),
+                            Naziv = "Bajina Bašta",
+                            PostanskiBroj = "31250"
+                        },
+                        new
+                        {
+                            Id = 111,
+                            GeografskaDuzina = 19.908300000000001,
+                            GeografskaSirina = 44.0,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.9083 44)"),
+                            Naziv = "Kosjerić",
+                            PostanskiBroj = "31260"
+                        },
+                        new
+                        {
+                            Id = 112,
+                            GeografskaDuzina = 20.0364,
+                            GeografskaSirina = 43.8461,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.0364 43.8461)"),
+                            Naziv = "Požega",
+                            PostanskiBroj = "31210"
+                        },
+                        new
+                        {
+                            Id = 113,
+                            GeografskaDuzina = 19.715599999999998,
+                            GeografskaSirina = 43.749699999999997,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.7156 43.7497)"),
+                            Naziv = "Čajetina",
+                            PostanskiBroj = "31310"
+                        },
+                        new
+                        {
+                            Id = 114,
+                            GeografskaDuzina = 20.095600000000001,
+                            GeografskaSirina = 43.753100000000003,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.0956 43.7531)"),
+                            Naziv = "Arilje",
+                            PostanskiBroj = "31230"
+                        },
+                        new
+                        {
+                            Id = 115,
+                            GeografskaDuzina = 19.5258,
+                            GeografskaSirina = 43.583599999999997,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.5258 43.5836)"),
+                            Naziv = "Priboj",
+                            PostanskiBroj = "31330"
+                        },
+                        new
+                        {
+                            Id = 116,
+                            GeografskaDuzina = 19.813099999999999,
+                            GeografskaSirina = 43.460299999999997,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.8131 43.4603)"),
+                            Naziv = "Nova Varoš",
+                            PostanskiBroj = "31320"
+                        },
+                        new
+                        {
+                            Id = 117,
+                            GeografskaDuzina = 19.648900000000001,
+                            GeografskaSirina = 43.389699999999998,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (19.6489 43.3897)"),
+                            Naziv = "Prijepolje",
+                            PostanskiBroj = "31300"
+                        },
+                        new
+                        {
+                            Id = 118,
+                            GeografskaDuzina = 20.000299999999999,
+                            GeografskaSirina = 43.273099999999999,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.0003 43.2731)"),
+                            Naziv = "Sjenica",
+                            PostanskiBroj = "36310"
+                        },
+                        new
+                        {
+                            Id = 119,
+                            GeografskaDuzina = 20.461400000000001,
+                            GeografskaSirina = 44.0261,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.4614 44.0261)"),
+                            Naziv = "Gornji Milanovac",
+                            PostanskiBroj = "32300"
+                        },
+                        new
+                        {
+                            Id = 120,
+                            GeografskaDuzina = 20.138100000000001,
+                            GeografskaSirina = 43.860799999999998,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.1381 43.8608)"),
+                            Naziv = "Lučani",
+                            PostanskiBroj = "32240"
+                        },
+                        new
+                        {
+                            Id = 121,
+                            GeografskaDuzina = 20.229199999999999,
+                            GeografskaSirina = 43.579700000000003,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.2292 43.5797)"),
+                            Naziv = "Ivanjica",
+                            PostanskiBroj = "32250"
+                        },
+                        new
+                        {
+                            Id = 122,
+                            GeografskaDuzina = 20.8933,
+                            GeografskaSirina = 43.623600000000003,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.8933 43.6236)"),
+                            Naziv = "Vrnjačka Banja",
+                            PostanskiBroj = "36210"
+                        },
+                        new
+                        {
+                            Id = 123,
+                            GeografskaDuzina = 20.613600000000002,
+                            GeografskaSirina = 43.286099999999998,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.6136 43.2861)"),
+                            Naziv = "Raška",
+                            PostanskiBroj = "36350"
+                        },
+                        new
+                        {
+                            Id = 124,
+                            GeografskaDuzina = 20.337199999999999,
+                            GeografskaSirina = 42.9908,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (20.3372 42.9908)"),
+                            Naziv = "Tutin",
+                            PostanskiBroj = "36320"
+                        },
+                        new
+                        {
+                            Id = 125,
+                            GeografskaDuzina = 21.366399999999999,
+                            GeografskaSirina = 43.723100000000002,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.3664 43.7231)"),
+                            Naziv = "Varvarin",
+                            PostanskiBroj = "37260"
+                        },
+                        new
+                        {
+                            Id = 126,
+                            GeografskaDuzina = 21.002500000000001,
+                            GeografskaSirina = 43.616700000000002,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.0025 43.6167)"),
+                            Naziv = "Trstenik",
+                            PostanskiBroj = "37240"
+                        },
+                        new
+                        {
+                            Id = 127,
+                            GeografskaDuzina = 21.4419,
+                            GeografskaSirina = 43.719200000000001,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.4419 43.7192)"),
+                            Naziv = "Ćićevac",
+                            PostanskiBroj = "37210"
+                        },
+                        new
+                        {
+                            Id = 128,
+                            GeografskaDuzina = 21.0472,
+                            GeografskaSirina = 43.458599999999997,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.0472 43.4586)"),
+                            Naziv = "Aleksandrovac",
+                            PostanskiBroj = "37230"
+                        },
+                        new
+                        {
+                            Id = 129,
+                            GeografskaDuzina = 21.033100000000001,
+                            GeografskaSirina = 43.383600000000001,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.0331 43.3836)"),
+                            Naziv = "Brus",
+                            PostanskiBroj = "37220"
+                        },
+                        new
+                        {
+                            Id = 130,
+                            GeografskaDuzina = 21.706900000000001,
+                            GeografskaSirina = 43.541699999999999,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.7069 43.5417)"),
+                            Naziv = "Aleksinac",
+                            PostanskiBroj = "18220"
+                        },
+                        new
+                        {
+                            Id = 131,
+                            GeografskaDuzina = 22.1236,
+                            GeografskaSirina = 43.4161,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (22.1236 43.4161)"),
+                            Naziv = "Svrljig",
+                            PostanskiBroj = "18360"
+                        },
+                        new
+                        {
+                            Id = 132,
+                            GeografskaDuzina = 21.722200000000001,
+                            GeografskaSirina = 43.283299999999997,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.7222 43.2833)"),
+                            Naziv = "Merošina",
+                            PostanskiBroj = "18252"
+                        },
+                        new
+                        {
+                            Id = 133,
+                            GeografskaDuzina = 21.5486,
+                            GeografskaSirina = 43.673900000000003,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.5486 43.6739)"),
+                            Naziv = "Ražanj",
+                            PostanskiBroj = "37215"
+                        },
+                        new
+                        {
+                            Id = 134,
+                            GeografskaDuzina = 21.832799999999999,
+                            GeografskaSirina = 43.1967,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.8328 43.1967)"),
+                            Naziv = "Doljevac",
+                            PostanskiBroj = "18410"
+                        },
+                        new
+                        {
+                            Id = 135,
+                            GeografskaDuzina = 22.033300000000001,
+                            GeografskaSirina = 43.223599999999998,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (22.0333 43.2236)"),
+                            Naziv = "Gadžin Han",
+                            PostanskiBroj = "18240"
+                        },
+                        new
+                        {
+                            Id = 136,
+                            GeografskaDuzina = 21.285299999999999,
+                            GeografskaSirina = 43.2958,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.2853 43.2958)"),
+                            Naziv = "Blace",
+                            PostanskiBroj = "18420"
+                        },
+                        new
+                        {
+                            Id = 137,
+                            GeografskaDuzina = 21.271100000000001,
+                            GeografskaSirina = 43.140599999999999,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.2711 43.1406)"),
+                            Naziv = "Kuršumlija",
+                            PostanskiBroj = "18430"
+                        },
+                        new
+                        {
+                            Id = 138,
+                            GeografskaDuzina = 21.7136,
+                            GeografskaSirina = 43.184699999999999,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.7136 43.1847)"),
+                            Naziv = "Žitorađa",
+                            PostanskiBroj = "18412"
+                        },
+                        new
+                        {
+                            Id = 139,
+                            GeografskaDuzina = 22.308299999999999,
+                            GeografskaSirina = 43.217799999999997,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (22.3083 43.2178)"),
+                            Naziv = "Bela Palanka",
+                            PostanskiBroj = "18310"
+                        },
+                        new
+                        {
+                            Id = 140,
+                            GeografskaDuzina = 22.4114,
+                            GeografskaSirina = 43.067500000000003,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (22.4114 43.0675)"),
+                            Naziv = "Babušnica",
+                            PostanskiBroj = "18330"
+                        },
+                        new
+                        {
+                            Id = 141,
+                            GeografskaDuzina = 22.775600000000001,
+                            GeografskaSirina = 43.016100000000002,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (22.7756 43.0161)"),
+                            Naziv = "Dimitrovgrad",
+                            PostanskiBroj = "18320"
+                        },
+                        new
+                        {
+                            Id = 142,
+                            GeografskaDuzina = 21.718599999999999,
+                            GeografskaSirina = 43.014200000000002,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.7186 43.0142)"),
+                            Naziv = "Bojnik",
+                            PostanskiBroj = "16205"
+                        },
+                        new
+                        {
+                            Id = 143,
+                            GeografskaDuzina = 21.7361,
+                            GeografskaSirina = 42.916699999999999,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.7361 42.9167)"),
+                            Naziv = "Lebane",
+                            PostanskiBroj = "16230"
+                        },
+                        new
+                        {
+                            Id = 144,
+                            GeografskaDuzina = 21.5853,
+                            GeografskaSirina = 42.843299999999999,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.5853 42.8433)"),
+                            Naziv = "Medveđa",
+                            PostanskiBroj = "16240"
+                        },
+                        new
+                        {
+                            Id = 145,
+                            GeografskaDuzina = 22.128900000000002,
+                            GeografskaSirina = 42.965800000000002,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (22.1289 42.9658)"),
+                            Naziv = "Vlasotince",
+                            PostanskiBroj = "16210"
+                        },
+                        new
+                        {
+                            Id = 146,
+                            GeografskaDuzina = 22.2989,
+                            GeografskaSirina = 42.810000000000002,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (22.2989 42.81)"),
+                            Naziv = "Crna Trava",
+                            PostanskiBroj = "16215"
+                        },
+                        new
+                        {
+                            Id = 147,
+                            GeografskaDuzina = 22.066400000000002,
+                            GeografskaSirina = 42.7072,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (22.0664 42.7072)"),
+                            Naziv = "Vladičin Han",
+                            PostanskiBroj = "17510"
+                        },
+                        new
+                        {
+                            Id = 148,
+                            GeografskaDuzina = 22.170000000000002,
+                            GeografskaSirina = 42.690800000000003,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (22.17 42.6908)"),
+                            Naziv = "Surdulica",
+                            PostanskiBroj = "17530"
+                        },
+                        new
+                        {
+                            Id = 149,
+                            GeografskaDuzina = 22.472799999999999,
+                            GeografskaSirina = 42.5,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (22.4728 42.5)"),
+                            Naziv = "Bosilegrad",
+                            PostanskiBroj = "17540"
+                        },
+                        new
+                        {
+                            Id = 150,
+                            GeografskaDuzina = 22.085599999999999,
+                            GeografskaSirina = 42.351100000000002,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (22.0856 42.3511)"),
+                            Naziv = "Trgovište",
+                            PostanskiBroj = "17525"
+                        },
+                        new
+                        {
+                            Id = 151,
+                            GeografskaDuzina = 21.7667,
+                            GeografskaSirina = 42.459200000000003,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.7667 42.4592)"),
+                            Naziv = "Bujanovac",
+                            PostanskiBroj = "17520"
+                        },
+                        new
+                        {
+                            Id = 152,
+                            GeografskaDuzina = 21.649699999999999,
+                            GeografskaSirina = 42.309199999999997,
+                            Lokacija = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (21.6497 42.3092)"),
+                            Naziv = "Preševo",
+                            PostanskiBroj = "17523"
                         });
                 });
 

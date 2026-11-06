@@ -77,7 +77,7 @@ Namerno NISU korišćeni globalni query filteri: filter bi "sakrio" obrisan ogla
 
 ## 6. Seed podaci
 
-- U **migraciji** (`HasData`): 3 uloge, 28 gradova Srbije sa koordinatama, 37 kategorija (10 glavnih + podkategorije), 28 definicija atributa.
+- U **migraciji** (`HasData`): 3 uloge, 152 mesta Srbije sa koordinatama (sedišta svih 145 gradova i opština + prigradska mesta Beograda; naziv sa srpskom kolacijom `Serbian_Latin_100_CI_AS`), 37 kategorija (10 glavnih + podkategorije), 28 definicija atributa.
 - **Demo podaci** (samo razvoj/Docker, `DemoPodaciSeeder`): 6 korisnika, 18 oglasa, završena kupovina sa escrow-om i recenzijama, ponuda na čekanju, prijava, zahtev "Tražim", izdvojeni oglasi i jedan oglas star 61 dan (pozadinski posao ga automatski označava kao istekao). Svi demo podaci se prave kroz domenske metode.
 
 ## 7. Korisni SQL upiti za odbranu

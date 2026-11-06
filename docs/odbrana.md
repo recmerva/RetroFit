@@ -108,6 +108,7 @@ Zatim ponovo pokrenuti backend. On sam primeni migracije i ubaci demo podatke (`
 | Eksplicitni CASCADE za "delove" entiteta | `Konfiguracije/KonfiguracijaPomoc.cs:34` |
 | Migracija 1: šema | `Persistencija/Migracije/20261103124556_Inicijalna.cs` |
 | Migracija 2: Full-Text + SPATIAL indeks (ručni SQL) | `Persistencija/Migracije/20261103124619_FullTextIProstorniIndeks.cs` (SPATIAL: 26, FTS katalog: 40, FTS indeksi: 43 i 48) |
+| Migracija 3: svih 152 mesta Srbije + srpska kolacija za nazive gradova | `Persistencija/Migracije/20261106195636_SviGradoviSrbije.cs` |
 | Seed u migraciji (uloge, gradovi, kategorije, atributi) | `Persistencija/Seed/PocetniPodaci.cs` |
 | Demo podaci (korisnici, oglasi, kupovina) | `Persistencija/Seed/DemoPodaciSeeder.cs` |
 | Automatsko primenjivanje migracija pri startu | `Persistencija/Seed/InicijalizacijaBaze.cs`, poziv u `backend/RetroFit.API/Program.cs:92` |
@@ -265,7 +266,7 @@ O: To su različiti pojmovi. Rezervacija je privremeno zadržavanje oglasa za je
 O: Korisnik ima jednu listu omiljenih, pa bi `Wishlists` imala tačno jedan red po korisniku, bez ikakve informacije. `OmiljeniOglasi (KorisnikId, OglasId)` sa kompozitnim primarnim ključem sama sprečava duplikate.
 
 **P: Zašto ste dodali tabelu Gradovi?**
-O: Slobodan tekst ("Beograd", "beograd", "BG") ne može pouzdano da se filtrira. Uz to, tabela ima kolonu `Lokacija` tipa `geography`, što omogućava pretragu po udaljenosti uz SPATIAL indeks. U seed-u je 28 gradova sa koordinatama.
+O: Slobodan tekst ("Beograd", "beograd", "BG") ne može pouzdano da se filtrira. Uz to, tabela ima kolonu `Lokacija` tipa `geography`, što omogućava pretragu po udaljenosti uz SPATIAL indeks. U seed-u su 152 mesta sa koordinatama: sedišta svih 145 gradova i opština Srbije i prigradska mesta Beograda. Kolona `Naziv` ima srpsku kolaciju (`Serbian_Latin_100_CI_AS`), pa se lista sortira po našoj abecedi (C, Č, Ć...).
 
 **P: Šta je EAV i zašto ga koristite?**
 O: Entity-Attribute-Value: atributi se ne drže u kolonama, nego kao redovi. `DefinicijeAtributa` kaže koje atribute ima koja kategorija (npr. telefoni: memorija, boja; bicikli: veličina rama), a `AtributiOglasa` čuva vrednosti. Prednost: nova kategorija sa novim atributima ne zahteva izmenu šeme. Mana: teže je filtrirati po vrednosti i nema jake tipizacije u bazi. Zato je EAV korišćen samo za dodatne atribute, a sve što se često filtrira (cena, stanje, grad, tip) su prave kolone.
