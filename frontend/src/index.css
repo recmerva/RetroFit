@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+/* RetroFit tema: topla "retro" paleta (narandžasta + tamnoplava) */
+@theme {
+  --color-retro-50: #fff7ed;
+  --color-retro-100: #ffedd5;
+  --color-retro-200: #fed7aa;
+  --color-retro-300: #fdba74;
+  --color-retro-400: #fb923c;
+  --color-retro-500: #f97316;
+  --color-retro-600: #ea580c;
+  --color-retro-700: #c2410c;
+  --color-retro-800: #9a3412;
+  --color-noc-700: #1e3a5f;
+  --color-noc-800: #172b46;
+  --color-noc-900: #0f1d30;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-800 antialiased;
+  }
+  h1, h2, h3 {
+    @apply text-slate-900;
+  }
+}
+
+/* Tailwind v4: sopstvene klase koje se kombinuju preko @apply definišu se kao @utility. */
+@utility dugme {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition
+    disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-retro-500;
+}
+
+@utility dugme-primarno {
+  @apply dugme bg-retro-600 text-white hover:bg-retro-700;
+}
+
+@utility dugme-sekundarno {
+  @apply dugme border border-slate-300 bg-white text-slate-700 hover:bg-slate-100;
+}
+
+@utility dugme-opasno {
+  @apply dugme bg-red-600 text-white hover:bg-red-700;
+}
+
+@utility dugme-tamno {
+  @apply dugme bg-noc-800 text-white hover:bg-noc-700;
+}
+
+@utility unos {
+  @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm shadow-sm placeholder:text-slate-400
+    focus:border-retro-500 focus:ring-2 focus:ring-retro-200 focus:outline-none disabled:bg-slate-100;
+}
+
+@utility oznaka {
+  @apply mb-1 block text-sm font-medium text-slate-700;
+}
+
+@utility kartica {
+  @apply rounded-xl border border-slate-200 bg-white shadow-sm;
+}
+
+@utility znacka {
+  @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-semibold;
+}

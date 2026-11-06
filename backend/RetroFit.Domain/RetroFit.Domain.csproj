@@ -1,0 +1,6 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Domenski sloj: NEMA zavisnosti ni od jednog drugog sloja niti NuGet paketa. -->
+  <PropertyGroup>
+    <RootNamespace>RetroFit.Domain</RootNamespace>
+  </PropertyGroup>
+</Project>

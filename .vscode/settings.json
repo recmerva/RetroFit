@@ -1,0 +1,15 @@
+{
+  // Sakriva automatski generisane foldere iz Explorer-a (fajlovi i dalje postoje na disku).
+  "files.exclude": {
+    "**/bin": true,
+    "**/obj": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/TestRezultati": true
+  },
+  "search.exclude": {
+    "**/Migracije/*.Designer.cs": true,
+    "**/package-lock.json": true
+  },
+  "dotnet.defaultSolution": "backend/RetroFit.sln"
+}

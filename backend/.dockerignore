@@ -1,0 +1,10 @@
+**/bin
+**/obj
+**/node_modules
+**/dist
+**/logs
+**/uploads
+**/.vs
+**/.vscode
+**/*.user
+RetroFit.Tests

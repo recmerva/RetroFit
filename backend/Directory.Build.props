@@ -1,0 +1,23 @@
+<Project>
+  <!-- Zajednička podešavanja za sve .NET projekte u solution-u -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>12.0</LangVersion>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <!-- CS1591: nedostaje XML komentar - ne želimo upozorenje za svaki javni član -->
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <!--
+      GHSA-rvv3-g6hj-g44x (AutoMapper < 15.1.1): DoS kod mapiranja duboko ugnježdenih grafova objekata.
+      Ispravka postoji samo u komercijalnim verzijama (15.1.1+). U ovom projektu nije iskoristivo jer:
+        1) AutoMapper mapira samo entitete iz baze (plitki grafovi) u DTO, ne korisnički ulaz;
+        2) JSON ulaz je ograničen na dubinu 32 (JsonSerializerOptions.MaxDepth u API sloju);
+        3) sve mape imaju MaxDepth ograničenje (MappingProfile).
+      Detalji: docs/bezbednost.md
+    -->
+    <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-rvv3-g6hj-g44x" />
+  </ItemGroup>
+</Project>

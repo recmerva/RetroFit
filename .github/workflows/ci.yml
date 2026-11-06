@@ -1,0 +1,81 @@
+# CI: na svaki push i pull request - restore, build, testovi (backend), lint i build (frontend)
+# i provera da se svi Docker image-i uspešno grade. Neuspeh bilo kog koraka obara ceo build.
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend:
+    name: Backend (.NET 8) - build i testovi
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalacija .NET SDK (verzija iz global.json)
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: backend/global.json
+
+      - name: Restore
+        run: dotnet restore RetroFit.sln
+
+      - name: Build
+        run: dotnet build RetroFit.sln --configuration Release --no-restore
+
+      - name: Jedinični testovi
+        run: >
+          dotnet test RetroFit.sln --configuration Release --no-build
+          --logger "trx;LogFileName=rezultati.trx"
+          --logger "console;verbosity=normal"
+          --collect:"XPlat Code Coverage"
+          --results-directory ./TestRezultati
+
+      - name: Rezultati testova (artefakt)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rezultati-testova
+          path: backend/TestRezultati
+
+      - name: Provera da su migracije u skladu sa modelom
+        run: |
+          dotnet tool restore
+          dotnet ef migrations has-pending-model-changes --project RetroFit.Infrastructure --startup-project RetroFit.Infrastructure
+
+  frontend:
+    name: Frontend (React) - lint i build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
+
+  docker:
+    name: Docker image-i
+    runs-on: ubuntu-latest
+    needs: [backend, frontend]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Provera docker-compose konfiguracije
+        run: docker compose config --quiet
+      - name: Build svih image-a
+        run: docker compose build

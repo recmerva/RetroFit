@@ -1,0 +1,72 @@
+# RetroFit - pokretanje cele aplikacije jednom komandom:
+#   docker compose up --build
+# Aplikacija: http://localhost:8080   ·   Swagger: http://localhost:5000/swagger
+#
+# Tajne vrednosti se čitaju iz .env fajla (vidi .env.example). Podrazumevane vrednosti ispod
+# služe SAMO za lokalnu demonstraciju - u produkciji ih obavezno promenite.
+
+name: retrofit
+
+services:
+  sql:
+    build: ./docker/sqlserver-fts
+    image: retrofit/sqlserver-fts:2022
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+      MSSQL_SA_PASSWORD: "${SA_LOZINKA:-RetroFit_Demo!Lozinka2026}"
+    ports:
+      - "14333:1433"
+    volumes:
+      - sqldata:/var/opt/mssql
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P \"$$MSSQL_SA_PASSWORD\" -C -Q \"SELECT 1\" || /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P \"$$MSSQL_SA_PASSWORD\" -Q \"SELECT 1\""]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+    restart: unless-stopped
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: RetroFit.API/Dockerfile
+    image: retrofit/api:latest
+    depends_on:
+      sql:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Production"
+      ConnectionStrings__RetroFit: "Server=sql,1433;Database=RetroFit;User Id=sa;Password=${SA_LOZINKA:-RetroFit_Demo!Lozinka2026};TrustServerCertificate=True"
+      Jwt__Kljuc: "${JWT_KLJUC:-docker-demo-jwt-kljuc-promenite-me-u-produkciji-2026}"
+      BotDetekcija__TajniKljuc: "${BOT_KLJUC:-docker-demo-bot-detekcija-kljuc-promenite-me-2026}"
+      BotDetekcija__Rezim: "${BOT_REZIM:-Zastita}"
+      Baza__PrimeniMigracije: "true"
+      Baza__DemoPodaci: "${DEMO_PODACI:-true}"
+      Swagger__Ukljucen: "true"
+      # Aplikacija se otvara preko http://localhost, pa cookie ne sme da zahteva HTTPS.
+      # Iza pravog HTTPS proxy-ja ovo se postavlja na true.
+      Kolacic__Secure: "false"
+      # Verujemo X-Forwarded-For SAMO od nginx-a iz Docker mreže (privatni opseg).
+      ReverseProxy__PouzdaneMreze__0: "172.16.0.0/12"
+      ReverseProxy__PouzdaneMreze__1: "192.168.0.0/16"
+      ReverseProxy__PouzdaneMreze__2: "10.0.0.0/8"
+    ports:
+      - "5000:8080"
+    volumes:
+      - uploads:/app/uploads
+    restart: unless-stopped
+
+  web:
+    build: ./frontend
+    image: retrofit/web:latest
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+
+volumes:
+  sqldata:
+  uploads:

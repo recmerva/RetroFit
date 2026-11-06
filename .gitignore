@@ -1,0 +1,31 @@
+# ---------- Tajne ----------
+.env
+
+# ---------- Backend (.NET) ----------
+bin/
+obj/
+.vs/
+*.user
+*.suo
+TestRezultati/
+TestResults/
+
+# Podaci koje aplikacija pravi dok radi
+backend/RetroFit.API/uploads/
+backend/RetroFit.API/logs/
+
+# ---------- Frontend (React / Vite) ----------
+node_modules/
+dist/
+*.local
+npm-debug.log*
+
+# ---------- Editori i sistem ----------
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.log
