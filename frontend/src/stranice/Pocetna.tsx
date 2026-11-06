@@ -8,7 +8,8 @@ import type { OglasKartica, StanjeProizvoda, TipOglasa } from '../api/tipovi'
 import { MrezaOglasa } from '../komponente/KarticaOglasa'
 import { Greska, Prazno, Ucitavanje } from '../komponente/Ui'
 import { nazivStanja } from '../pomocno/format'
-import { useGradovi, useKategorije, useUpit } from '../pomocno/kuke'
+import { IzborGrada } from '../komponente/IzborGrada'
+import { useKategorije, useUpit } from '../pomocno/kuke'
 import { usePrebaciOmiljeni } from '../pomocno/omiljeni'
 
 const ikonice: Record<string, typeof Laptop> = {
@@ -19,7 +20,6 @@ const ikonice: Record<string, typeof Laptop> = {
 export default function Pocetna() {
   const navigacija = useNavigate()
   const kategorije = useKategorije()
-  const gradovi = useGradovi()
   const [filter, setFilter] = useState({ upit: '', kategorijaId: '', gradId: '', cenaDo: '', stanje: '', tip: '' })
 
   const izdvojeni = useUpit(() => oglasi.izdvojeni(8), [])
@@ -45,11 +45,12 @@ export default function Pocetna() {
 
   return (
     <div className="space-y-10">
-      <section className="overflow-hidden rounded-2xl bg-gradient-to-br from-noc-800 via-noc-700 to-retro-700 p-8 text-white shadow-lg md:p-12">
-        <h1 className="max-w-2xl text-3xl font-black text-white md:text-4xl">Polovne stvari, nova priča.</h1>
-        <p className="mt-2 max-w-xl text-slate-200">Kupi, prodaj, razmeni ili pokloni - lokalno, sigurno i bez komplikacija.</p>
-        <form onSubmit={pretrazi} className="mt-6 grid gap-2 rounded-xl bg-white/10 p-3 backdrop-blur md:grid-cols-6" role="search">
-          <div className="relative md:col-span-2">
+      <section className="rounded-2xl bg-gradient-to-br from-noc-800 via-noc-700 to-retro-700 p-5 text-white shadow-lg sm:p-8 lg:p-12">
+        <h1 className="max-w-2xl text-2xl font-black text-white sm:text-3xl lg:text-4xl">Polovne stvari, nova priča.</h1>
+        <p className="mt-2 max-w-xl text-sm text-slate-200 sm:text-base">Kupi, prodaj, razmeni ili pokloni - lokalno, sigurno i bez komplikacija.</p>
+        {/* Telefon: jedna kolona; tablet: dve; desktop: sve u jednom redu. */}
+        <form onSubmit={pretrazi} className="mt-6 grid gap-2 rounded-xl bg-white/10 p-3 backdrop-blur sm:grid-cols-2 lg:grid-cols-6" role="search">
+          <div className="relative sm:col-span-2">
             <Search className="absolute top-2.5 left-3 h-4 w-4 text-slate-400" />
             <input className="unos pl-9 text-slate-800" placeholder="Šta tražite?" value={filter.upit}
               onChange={(e) => setFilter({ ...filter, upit: e.target.value })} aria-label="Pojam za pretragu" />
@@ -59,16 +60,13 @@ export default function Pocetna() {
             <option value="">Sve kategorije</option>
             {kategorije.map((k) => <option key={k.id} value={k.id}>{k.naziv}</option>)}
           </select>
-          <select className="unos text-slate-800" value={filter.gradId} onChange={(e) => setFilter({ ...filter, gradId: e.target.value })} aria-label="Grad">
-            <option value="">Svi gradovi</option>
-            {gradovi.map((g) => <option key={g.id} value={g.id}>{g.naziv}</option>)}
-          </select>
+          <IzborGrada vrednost={filter.gradId} promeni={(gradId) => setFilter({ ...filter, gradId })} praznaOpcija="Svi gradovi" />
           <select className="unos text-slate-800" value={filter.stanje} onChange={(e) => setFilter({ ...filter, stanje: e.target.value })} aria-label="Stanje">
             <option value="">Bilo koje stanje</option>
             {(Object.keys(nazivStanja) as StanjeProizvoda[]).map((s) => <option key={s} value={s}>{nazivStanja[s]}</option>)}
           </select>
           <button className="dugme-primarno">Pretraži</button>
-          <div className="flex flex-wrap gap-2 md:col-span-6">
+          <div className="flex flex-wrap items-center gap-2 sm:col-span-2 lg:col-span-6">
             {(['', 'Prodaja', 'Razmena', 'Poklon'] as (TipOglasa | '')[]).map((t) => (
               <button type="button" key={t} onClick={() => setFilter({ ...filter, tip: t })}
                 className={`rounded-full px-3 py-1 text-xs font-semibold ${filter.tip === t ? 'bg-retro-500 text-white' : 'bg-white/20 text-white hover:bg-white/30'}`}>
@@ -83,15 +81,16 @@ export default function Pocetna() {
 
       <section>
         <h2 className="mb-4 text-xl font-bold">Kategorije</h2>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
           {kategorije.map((k) => {
             const Ikonica = ikonice[k.ikonica ?? 'ostalo'] ?? Package
             return (
               <Link key={k.id} to={`/oglasi?kategorijaId=${k.id}`}
                 className="kartica flex items-center gap-3 p-3 transition hover:border-retro-300 hover:shadow-md">
-                <span className="rounded-lg bg-retro-50 p-2 text-retro-600"><Ikonica className="h-5 w-5" /></span>
+                <span className="shrink-0 rounded-lg bg-retro-50 p-2 text-retro-600"><Ikonica className="h-5 w-5" /></span>
                 <span className="min-w-0">
-                  <span className="block truncate text-sm font-semibold">{k.naziv}</span>
+                  {/* Ceo naziv u najviše dva reda, umesto odsecanja ("Knjige, muzika i ..."). */}
+                  <span className="line-clamp-2 text-sm leading-snug font-semibold break-words">{k.naziv}</span>
                   <span className="text-xs text-slate-500">{k.brojAktivnihOglasa} oglasa</span>
                 </span>
               </Link>

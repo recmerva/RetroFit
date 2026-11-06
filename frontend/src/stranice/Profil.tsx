@@ -9,7 +9,8 @@ import { useToast } from '../kontekst/ToastKontekst'
 import { MrezaOglasa } from '../komponente/KarticaOglasa'
 import { Greska, Kartice, Naslov, Polje, Prazno, Stranicenje, Ucitavanje, Znacka, Zvezdice } from '../komponente/Ui'
 import { cena, datum, nazivBedza, nazivStatusa, nazivStanja } from '../pomocno/format'
-import { useGradovi, useUpit } from '../pomocno/kuke'
+import { IzborGrada } from '../komponente/IzborGrada'
+import { useUpit } from '../pomocno/kuke'
 
 type Kartica = 'oglasi' | 'podaci' | 'telefon' | 'bezbednost' | 'pretrage'
 
@@ -41,7 +42,6 @@ function MojiOglasi() {
 function Podaci() {
   const { korisnik, postaviProfil } = useAuth()
   const toast = useToast()
-  const gradovi = useGradovi()
   const [p, setP] = useState({
     ime: korisnik!.ime, prezime: korisnik!.prezime, oKorisniku: korisnik!.oKorisniku ?? '', gradId: korisnik!.gradId?.toString() ?? '',
     prikaziTelefonKupcu: korisnik!.prikaziTelefonKupcu
@@ -62,16 +62,13 @@ function Podaci() {
   }
 
   return (
-    <form onSubmit={sacuvaj} className="kartica max-w-xl space-y-4 p-6">
+    <form onSubmit={sacuvaj} className="kartica max-w-xl space-y-4 p-4 sm:p-6">
       <div className="grid gap-4 sm:grid-cols-2">
         <Polje oznaka="Ime"><input className="unos" value={p.ime} onChange={(e) => setP({ ...p, ime: e.target.value })} /></Polje>
         <Polje oznaka="Prezime"><input className="unos" value={p.prezime} onChange={(e) => setP({ ...p, prezime: e.target.value })} /></Polje>
       </div>
       <Polje oznaka="Grad">
-        <select className="unos" value={p.gradId} onChange={(e) => setP({ ...p, gradId: e.target.value })}>
-          <option value="">--</option>
-          {gradovi.map((g) => <option key={g.id} value={g.id}>{g.naziv}</option>)}
-        </select>
+        <IzborGrada vrednost={p.gradId} promeni={(gradId) => setP({ ...p, gradId })} praznaOpcija="Nije izabran" />
       </Polje>
       <Polje oznaka="O meni"><textarea className="unos" rows={3} maxLength={500} value={p.oKorisniku} onChange={(e) => setP({ ...p, oKorisniku: e.target.value })} /></Polje>
       <label className="flex items-start gap-2 text-sm">
@@ -115,7 +112,7 @@ function Telefon() {
   }
 
   return (
-    <div className="kartica max-w-xl space-y-4 p-6">
+    <div className="kartica max-w-xl space-y-4 p-4 sm:p-6">
       <p className="flex items-center gap-2 text-sm">
         {korisnik!.telefonVerifikovan
           ? <><BadgeCheck className="h-5 w-5 text-blue-600" /> Broj <strong>{korisnik!.telefon}</strong> je verifikovan.</>
@@ -179,19 +176,19 @@ function Bezbednost() {
 
   return (
     <div className="grid max-w-3xl gap-6 md:grid-cols-2">
-      <form onSubmit={promeni} className="kartica space-y-3 p-6">
+      <form onSubmit={promeni} className="kartica space-y-3 p-4 sm:p-6">
         <h2 className="flex items-center gap-2 font-semibold"><KeyRound className="h-4 w-4" /> Promena lozinke</h2>
         <Polje oznaka="Trenutna lozinka"><input className="unos" type="password" value={stara} onChange={(e) => setStara(e.target.value)} autoComplete="current-password" /></Polje>
         <Polje oznaka="Nova lozinka"><input className="unos" type="password" value={nova} onChange={(e) => setNova(e.target.value)} autoComplete="new-password" /></Polje>
         <button className="dugme-primarno">Promeni lozinku</button>
       </form>
       <div className="space-y-6">
-        <div className="kartica space-y-3 p-6">
+        <div className="kartica space-y-3 p-4 sm:p-6">
           <h2 className="flex items-center gap-2 font-semibold"><LogOut className="h-4 w-4" /> Sesije</h2>
           <p className="text-sm text-slate-600">Odjavite se sa svih uređaja na kojima ste prijavljeni.</p>
           <button className="dugme-sekundarno" onClick={async () => { await odjavi(true); navigacija('/prijava') }}>Odjavi me svuda</button>
         </div>
-        <div className="kartica space-y-3 border-red-200 p-6">
+        <div className="kartica space-y-3 border-red-200 p-4 sm:p-6">
           <h2 className="flex items-center gap-2 font-semibold text-red-700"><Trash2 className="h-4 w-4" /> Brisanje naloga</h2>
           <input className="unos" type="password" placeholder="Potvrdite lozinkom" value={lozinkaBrisanja} onChange={(e) => setLozinkaBrisanja(e.target.value)} />
           <button className="dugme-opasno" disabled={!lozinkaBrisanja} onClick={obrisi}>Obriši nalog</button>
@@ -247,7 +244,7 @@ export default function Profil() {
 
   return (
     <div>
-      <div className="kartica mb-6 flex flex-wrap items-center gap-4 p-6">
+      <div className="kartica mb-6 flex flex-wrap items-center gap-4 p-4 sm:p-6">
         <span className="flex h-16 w-16 items-center justify-center rounded-full bg-noc-800 text-2xl font-bold text-white">{k.ime[0]}{k.prezime[0]}</span>
         <div className="flex-1">
           <h1 className="text-2xl font-bold">{k.ime} {k.prezime}</h1>

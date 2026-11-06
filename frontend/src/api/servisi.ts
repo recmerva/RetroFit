@@ -55,7 +55,8 @@ export const korisnici = {
 }
 
 export const katalog = {
-  gradovi: () => d(api.get<T.Grad[]>('/gradovi')),
+  // "?v=152" menja adresu kada se spisak gradova promeni, pa pregledač ne koristi staru keširanu listu.
+  gradovi: () => d(api.get<T.Grad[]>('/gradovi', { params: { v: 152 } })),
   kategorije: (ukljuciNeaktivne = false) => d(api.get<T.Kategorija[]>(`/kategorije?ukljuciNeaktivne=${ukljuciNeaktivne}`)),
   atributi: (kategorijaId: number) => d(api.get<T.DefinicijaAtributa[]>(`/kategorije/${kategorijaId}/atributi`)),
   sacuvajKategoriju: (id: number | null, p: { naziv: string; slug?: string; roditeljId?: number; ikonica?: string; redosled: number }) =>

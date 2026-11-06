@@ -53,11 +53,11 @@ export default function Ponude() {
           {r.podaci.stavke.map((p) => {
             const mojRed = p.status === 'NaCekanju' && p.ponudioKorisnikId !== korisnik!.id
             return (
-              <div key={p.id} className="kartica flex flex-wrap items-center gap-4 p-4">
+              <div key={p.id} className="kartica flex flex-wrap items-center gap-x-4 gap-y-3 p-4">
                 <Link to={`/oglasi/${p.oglasId}`} className="h-16 w-16 shrink-0 overflow-hidden rounded-lg">
                   <SlikaIliZamena putanja={p.oglasSlika} naslov={p.oglasNaslov} klasa="h-16" />
                 </Link>
-                <div className="min-w-0 flex-1">
+                <div className="min-w-48 flex-1">
                   <Link to={`/oglasi/${p.oglasId}`} className="font-semibold hover:underline">{p.oglasNaslov}</Link>
                   <p className="text-sm">
                     <strong className="text-retro-700">{iznos(p.iznos)}</strong>

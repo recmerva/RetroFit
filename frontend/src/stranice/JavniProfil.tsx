@@ -26,7 +26,7 @@ export default function JavniProfil() {
 
   return (
     <div className="space-y-6">
-      <div className="kartica grid gap-6 p-6 md:grid-cols-[1fr_280px]">
+      <div className="kartica grid gap-6 p-4 sm:p-6 md:grid-cols-[1fr_280px]">
         <div className="flex gap-4">
           <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-noc-800 text-2xl font-bold text-white">{p.prikaznoIme[0]}</span>
           <div>

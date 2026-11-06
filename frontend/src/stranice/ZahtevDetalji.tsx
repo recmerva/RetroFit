@@ -36,7 +36,7 @@ export default function ZahtevDetalji() {
 
   return (
     <div className="space-y-6">
-      <div className="kartica p-6">
+      <div className="kartica p-4 sm:p-6">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
             <p className="text-sm text-slate-500">Tražim · {z.kategorijaNaziv}{z.gradNaziv && ` · ${z.gradNaziv}`}</p>

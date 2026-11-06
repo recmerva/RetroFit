@@ -7,14 +7,14 @@ import { useAuth } from '../kontekst/AuthKontekst'
 import { useToast } from '../kontekst/ToastKontekst'
 import { Greska, Kartice, Modal, Naslov, Polje, Prazno, Stranicenje, Ucitavanje, Znacka } from '../komponente/Ui'
 import { cena, ravneKategorije, relativno } from '../pomocno/format'
-import { useGradovi, useKategorije, useUpit } from '../pomocno/kuke'
+import { IzborGrada } from '../komponente/IzborGrada'
+import { useKategorije, useUpit } from '../pomocno/kuke'
 
 export default function Trazim() {
   const { korisnik } = useAuth()
   const toast = useToast()
   const navigacija = useNavigate()
   const kategorije = useKategorije()
-  const gradovi = useGradovi()
   const [kartica, setKartica] = useState<'svi' | 'moji'>('svi')
   const [filter, setFilter] = useState({ upit: '', kategorijaId: '', gradId: '' })
   const [primenjen, setPrimenjen] = useState(filter)
@@ -57,16 +57,13 @@ export default function Trazim() {
       <p className="-mt-4 mb-6 text-sm text-slate-600">Ne možete da nađete ono što vam treba? Objavite šta tražite, a prodavci će vam ponuditi svoje oglase.</p>
       {korisnik && <Kartice aktivna={kartica} promeni={(k) => { setKartica(k); setStranica(1) }} kartice={[{ kljuc: 'svi', naziv: 'Svi zahtevi' }, { kljuc: 'moji', naziv: 'Moji zahtevi' }]} />}
       {kartica === 'svi' && (
-        <form className="mb-4 grid gap-2 md:grid-cols-[1fr_220px_180px_auto]" onSubmit={(e) => { e.preventDefault(); setPrimenjen(filter); setStranica(1) }}>
+        <form className="mb-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-[1fr_220px_220px_auto]" onSubmit={(e) => { e.preventDefault(); setPrimenjen(filter); setStranica(1) }}>
           <input className="unos" placeholder="Pretraga..." value={filter.upit} onChange={(e) => setFilter({ ...filter, upit: e.target.value })} />
           <select className="unos" value={filter.kategorijaId} onChange={(e) => setFilter({ ...filter, kategorijaId: e.target.value })}>
             <option value="">Sve kategorije</option>
             {ravneKategorije(kategorije).map((k) => <option key={k.id} value={k.id}>{k.naziv}</option>)}
           </select>
-          <select className="unos" value={filter.gradId} onChange={(e) => setFilter({ ...filter, gradId: e.target.value })}>
-            <option value="">Svi gradovi</option>
-            {gradovi.map((g) => <option key={g.id} value={g.id}>{g.naziv}</option>)}
-          </select>
+          <IzborGrada vrednost={filter.gradId} promeni={(gradId) => setFilter({ ...filter, gradId })} praznaOpcija="Svi gradovi" />
           <button className="dugme-tamno"><Search className="h-4 w-4" /> Traži</button>
         </form>
       )}
@@ -98,12 +95,9 @@ export default function Trazim() {
               {ravneKategorije(kategorije).map((k) => <option key={k.id} value={k.id}>{k.naziv}</option>)}
             </select>
           </Polje>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid gap-3 sm:grid-cols-2">
             <Polje oznaka="Grad (opciono)">
-              <select className="unos" value={z.gradId} onChange={(e) => setZ({ ...z, gradId: e.target.value })}>
-                <option value="">--</option>
-                {gradovi.map((g) => <option key={g.id} value={g.id}>{g.naziv}</option>)}
-              </select>
+              <IzborGrada vrednost={z.gradId} promeni={(gradId) => setZ({ ...z, gradId })} praznaOpcija="Bez grada" />
             </Polje>
             <Polje oznaka="Maksimalna cena (RSD)" greska={greske.maksimalnaCena}>
               <input className="unos" type="number" min={1} value={z.maksimalnaCena} onChange={(e) => setZ({ ...z, maksimalnaCena: e.target.value })} />

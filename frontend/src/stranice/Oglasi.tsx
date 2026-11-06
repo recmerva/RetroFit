@@ -9,7 +9,8 @@ import { useToast } from '../kontekst/ToastKontekst'
 import { MrezaOglasa } from '../komponente/KarticaOglasa'
 import { Greska, Modal, Prazno, Stranicenje, Ucitavanje } from '../komponente/Ui'
 import { nazivStanja, nazivTipa, ravneKategorije, sortiranja } from '../pomocno/format'
-import { useGradovi, useKategorije, useUpit } from '../pomocno/kuke'
+import { IzborGrada } from '../komponente/IzborGrada'
+import { useKategorije, useUpit } from '../pomocno/kuke'
 import { usePrebaciOmiljeni } from '../pomocno/omiljeni'
 
 const broj = (v: string | null) => (v ? Number(v) : undefined)
@@ -19,7 +20,6 @@ export default function Oglasi() {
   const { korisnik } = useAuth()
   const toast = useToast()
   const kategorije = useKategorije()
-  const gradovi = useGradovi()
   const [filteriOtvoreni, setFilteriOtvoreni] = useState(false)
   const [cuvanje, setCuvanje] = useState(false)
   const [nazivPretrage, setNazivPretrage] = useState('')
@@ -101,10 +101,7 @@ export default function Oglasi() {
       </div>
       <div>
         <span className="oznaka">Grad</span>
-        <select className="unos" value={p.gradId ?? ''} onChange={(e) => postavi({ gradId: e.target.value, lat: undefined, lng: undefined })}>
-          <option value="">Svi gradovi</option>
-          {gradovi.map((g) => <option key={g.id} value={g.id}>{g.naziv}</option>)}
-        </select>
+        <IzborGrada vrednost={p.gradId ?? ''} promeni={(gradId) => postavi({ gradId, lat: undefined, lng: undefined })} praznaOpcija="Svi gradovi" />
       </div>
       <div>
         <span className="oznaka">Udaljenost</span>
@@ -161,13 +158,14 @@ export default function Oglasi() {
 
   return (
     <div>
-      <div className="mb-4 flex flex-wrap items-center gap-3">
-        <form className="flex flex-1 gap-2" onSubmit={(e) => { e.preventDefault(); postavi({ upit: upitUnos.trim() }) }} role="search">
-          <input className="unos" placeholder="Pretraga po naslovu i opisu..." value={upitUnos} onChange={(e) => setUpitUnos(e.target.value)}
+      {/* Telefon: pretraga zauzima ceo prvi red, a sortiranje i filteri idu u drugi. */}
+      <div className="mb-4 flex flex-wrap items-center gap-2 sm:gap-3">
+        <form className="flex w-full gap-2 sm:w-auto sm:flex-1" onSubmit={(e) => { e.preventDefault(); postavi({ upit: upitUnos.trim() }) }} role="search">
+          <input className="unos min-w-0" placeholder="Pretraga po naslovu i opisu..." value={upitUnos} onChange={(e) => setUpitUnos(e.target.value)}
             aria-label="Pretraga" />
-          <button className="dugme-primarno">Traži</button>
+          <button className="dugme-primarno shrink-0">Traži</button>
         </form>
-        <select className="unos w-auto" value={p.sortiranje} onChange={(e) => postavi({ sortiranje: e.target.value })} aria-label="Sortiranje">
+        <select className="unos w-auto min-w-0 flex-1 sm:flex-none" value={p.sortiranje} onChange={(e) => postavi({ sortiranje: e.target.value })} aria-label="Sortiranje">
           {sortiranja.map((s) => <option key={s.vrednost} value={s.vrednost} disabled={s.vrednost === 'Udaljenost' && !p.gradId && !p.lat}>{s.naziv}</option>)}
         </select>
         <button className="dugme-sekundarno lg:hidden" onClick={() => setFilteriOtvoreni(true)}>

@@ -107,8 +107,10 @@ export function Modal({ naslov, otvoren, zatvori, children }: { naslov: string; 
 
   if (!otvoren) return null
   return (
-    <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/40 p-4" onClick={zatvori}>
-      <div className="kartica w-full max-w-lg p-6" role="dialog" aria-modal="true" aria-label={naslov} onClick={(e) => e.stopPropagation()}>
+    // Telefon: prozor "izlazi" odozdo i skroluje se ako je sadržaj viši od ekrana (npr. filteri).
+    <div className="fixed inset-0 z-40 flex items-end justify-center bg-black/40 p-0 sm:items-center sm:p-4" onClick={zatvori}>
+      <div className="kartica max-h-[92dvh] w-full max-w-lg overflow-y-auto rounded-b-none p-5 sm:rounded-xl sm:p-6" role="dialog" aria-modal="true" aria-label={naslov}
+        onClick={(e) => e.stopPropagation()}>
         <div className="mb-4 flex items-center justify-between">
           <h2 className="text-lg font-bold">{naslov}</h2>
           <button onClick={zatvori} aria-label="Zatvori">

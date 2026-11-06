@@ -20,7 +20,8 @@ public sealed class KatalogKontroler : ApiKontroler
     /// <summary>Lista gradova (sa koordinatama za pretragu po udaljenosti).</summary>
     [HttpGet("gradovi")]
     [AllowAnonymous]
-    [ResponseCache(Duration = 3600)]
+    // Kratak keš (5 min): šifarnik se retko menja, a posle izmene (nova migracija) korisnici brzo vide novi spisak.
+    [ResponseCache(Duration = 300)]
     [ProducesResponseType(typeof(IReadOnlyList<GradDto>), StatusCodes.Status200OK)]
     public async Task<ActionResult<IReadOnlyList<GradDto>>> Gradovi(CancellationToken ct) =>
         Ok(await Mediator.Send(new GradoviQuery(), ct));

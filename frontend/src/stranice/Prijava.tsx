@@ -35,7 +35,7 @@ export default function Prijava() {
 
   return (
     <div className="mx-auto max-w-md">
-      <form onSubmit={posalji} className="kartica space-y-4 p-6" noValidate>
+      <form onSubmit={posalji} className="kartica space-y-4 p-4 sm:p-6" noValidate>
         <div className="text-center">
           <h1 className="text-2xl font-bold">Prijava</h1>
           <p className="text-sm text-slate-500">Dobro došli nazad na RetroFit</p>

@@ -5,7 +5,7 @@ import { greskePolja, porukaGreske } from '../api/klijent'
 import { useAuth } from '../kontekst/AuthKontekst'
 import { useToast } from '../kontekst/ToastKontekst'
 import { Polje } from '../komponente/Ui'
-import { useGradovi } from '../pomocno/kuke'
+import { IzborGrada } from '../komponente/IzborGrada'
 
 /** Klijentska validacija (ista pravila kao FluentValidation na serveru - server je i dalje glavni čuvar). */
 function validiraj(p: { email: string; lozinka: string; potvrda: string; ime: string; prezime: string }) {
@@ -23,7 +23,6 @@ export default function Registracija() {
   const { registruj } = useAuth()
   const toast = useToast()
   const navigacija = useNavigate()
-  const gradovi = useGradovi()
   const [p, setP] = useState({ email: '', lozinka: '', potvrda: '', ime: '', prezime: '', gradId: '' })
   const [greske, setGreske] = useState<Record<string, string>>({})
   const [opsta, setOpsta] = useState<string | null>(null)
@@ -52,7 +51,7 @@ export default function Registracija() {
 
   return (
     <div className="mx-auto max-w-lg">
-      <form onSubmit={posalji} className="kartica space-y-4 p-6" noValidate>
+      <form onSubmit={posalji} className="kartica space-y-4 p-4 sm:p-6" noValidate>
         <div className="text-center">
           <h1 className="text-2xl font-bold">Registracija</h1>
           <p className="text-sm text-slate-500">Napravite nalog i počnite da kupujete i prodajete</p>
@@ -64,10 +63,7 @@ export default function Registracija() {
         </div>
         <Polje oznaka="Email" greska={greske.email}><input className="unos" type="email" autoComplete="email" {...polje('email')} /></Polje>
         <Polje oznaka="Grad (opciono)">
-          <select className="unos" {...polje('gradId')}>
-            <option value="">-- izaberite --</option>
-            {gradovi.map((g) => <option key={g.id} value={g.id}>{g.naziv}</option>)}
-          </select>
+          <IzborGrada vrednost={p.gradId} promeni={(gradId) => setP({ ...p, gradId })} praznaOpcija="Bez grada" />
         </Polje>
         <Polje oznaka="Lozinka" greska={greske.lozinka} pomoc="Najmanje 8 karaktera, bar jedno slovo i jedna cifra.">
           <input className="unos" type="password" autoComplete="new-password" {...polje('lozinka')} />

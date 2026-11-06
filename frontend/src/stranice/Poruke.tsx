@@ -150,7 +150,7 @@ function Nit({ id }: { id: number }) {
   const r = detalji.podaci
 
   return (
-    <div className="flex h-[70vh] flex-col">
+    <div className="flex h-[calc(100dvh-9.5rem)] min-h-[26rem] flex-col lg:h-[70vh]">
       <div className="flex items-center gap-3 border-b border-slate-200 p-3">
         <Link to="/poruke" className="lg:hidden" aria-label="Nazad"><ArrowLeft className="h-5 w-5" /></Link>
         <Link to={`/oglasi/${r.oglas.id}`} className="h-12 w-12 shrink-0 overflow-hidden rounded-lg">
@@ -187,8 +187,8 @@ function Nit({ id }: { id: number }) {
           ))}
         </div>
         <form onSubmit={posalji} className="flex gap-2">
-          <input className="unos" maxLength={2000} placeholder="Napišite poruku..." value={tekst} onChange={(e) => setTekst(e.target.value)} />
-          <button className="dugme-primarno" aria-label="Pošalji"><Send className="h-4 w-4" /></button>
+          <input className="unos min-w-0" maxLength={2000} placeholder="Napišite poruku..." value={tekst} onChange={(e) => setTekst(e.target.value)} />
+          <button className="dugme-primarno shrink-0" aria-label="Pošalji"><Send className="h-4 w-4" /></button>
         </form>
       </div>
     </div>
@@ -201,7 +201,7 @@ export default function Poruke() {
   const lista = useUpit(() => razgovori.lista(), [izabran])
 
   return (
-    <div className="kartica grid overflow-hidden lg:grid-cols-[320px_1fr]">
+    <div className="kartica grid grid-cols-1 overflow-hidden lg:grid-cols-[320px_1fr]">
       <aside className={`border-r border-slate-200 ${izabran ? 'hidden lg:block' : ''}`}>
         <h1 className="border-b border-slate-200 p-4 text-lg font-bold">Poruke</h1>
         {lista.ucitava && !lista.podaci ? <Ucitavanje /> : lista.greska ? <Greska poruka={lista.greska} /> : lista.podaci?.stavke.length ? (
@@ -225,7 +225,7 @@ export default function Poruke() {
           </ul>
         ) : <div className="p-4"><Prazno naslov="Još nemate poruka" opis="Otvorite oglas i pošaljite poruku prodavcu." /></div>}
       </aside>
-      <section className={izabran ? '' : 'hidden lg:block'}>
+      <section className={`min-w-0 ${izabran ? '' : 'hidden lg:block'}`}>
         {izabran ? <Nit key={izabran} id={izabran} /> : <div className="flex h-full items-center justify-center p-10 text-slate-400">Izaberite razgovor</div>}
       </section>
     </div>

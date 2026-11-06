@@ -54,9 +54,9 @@ function KarticaRezervacije({ r, osvezi }: { r: Rezervacija; osvezi: () => void 
   }
 
   return (
-    <div className="kartica flex flex-wrap items-center gap-4 p-4">
+    <div className="kartica flex flex-wrap items-center gap-x-4 gap-y-3 p-4">
       <Link to={`/oglasi/${r.oglas.id}`} className="h-16 w-16 shrink-0 overflow-hidden rounded-lg"><SlikaIliZamena putanja={r.oglas.glavnaSlika} naslov={r.oglas.naslov} klasa="h-16" /></Link>
-      <div className="min-w-0 flex-1">
+      <div className="min-w-48 flex-1">
         <Link to={`/oglasi/${r.oglas.id}`} className="font-semibold hover:underline">{r.oglas.naslov}</Link>
         <p className="text-sm text-slate-600">
           {jaSamKupac ? `Prodavac: ${r.prodavacIme}` : `Kupac: ${r.kupacIme}`} · dogovoreno <strong>{cena(r.dogovorenaCena, r.oglas.tip)}</strong>
@@ -124,7 +124,7 @@ function DetaljiTransakcije({ id }: { id: number }) {
   }
 
   return (
-    <div className="kartica mb-6 grid gap-6 p-6 md:grid-cols-[1fr_300px]">
+    <div className="kartica mb-6 grid gap-6 p-4 sm:p-6 md:grid-cols-[1fr_300px]">
       <div>
         <div className="mb-3 flex flex-wrap items-center gap-2">
           <h2 className="text-xl font-bold">{t.oglas.naslov}</h2>
@@ -146,14 +146,14 @@ function DetaljiTransakcije({ id }: { id: number }) {
         </ol>
         {t.razlogOtkazivanja && <p className="mt-2 text-sm text-red-700">Otkazano: {t.razlogOtkazivanja}</p>}
         {t.placanja.length > 0 && (
-          <table className="mt-4 w-full text-left text-xs">
+          <div className="mt-4 overflow-x-auto"><table className="w-full min-w-[28rem] text-left text-xs">
             <thead className="text-slate-500"><tr><th>Plaćanje</th><th>Iznos</th><th>Referenca</th><th>Vreme</th></tr></thead>
             <tbody>
               {t.placanja.map((p) => (
                 <tr key={p.id} className="border-t border-slate-100"><td>{p.tip}</td><td>{iznos(p.iznos)}</td><td className="font-mono">{p.referencaProcesora.slice(0, 22)}…</td><td>{datumVreme(p.kreiranoUtc)}</td></tr>
               ))}
             </tbody>
-          </table>
+          </table></div>
         )}
       </div>
       <div className="space-y-2">
@@ -221,7 +221,7 @@ export default function Transakcije() {
           {transakcije.podaci.stavke.map((t) => (
             <Link key={t.id} to={`/transakcije/${t.id}`} className="kartica flex flex-wrap items-center gap-3 p-3 hover:shadow-md">
               <span className="h-12 w-12 shrink-0 overflow-hidden rounded-lg"><SlikaIliZamena putanja={t.oglas.glavnaSlika} naslov={t.oglas.naslov} klasa="h-12" /></span>
-              <span className="min-w-0 flex-1">
+              <span className="min-w-48 flex-1">
                 <span className="block font-semibold">{t.oglas.naslov}</span>
                 <span className="text-xs text-slate-500">{t.kupacId === korisnik!.id ? 'Kupovina' : 'Prodaja'} · {cena(t.cena, t.oglas.tip)} · {relativno(t.kreiranoUtc)}</span>
               </span>

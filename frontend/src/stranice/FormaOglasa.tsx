@@ -7,7 +7,8 @@ import type { DefinicijaAtributa, OglasPodaci, Slika, StanjeProizvoda, TipOglasa
 import { useToast } from '../kontekst/ToastKontekst'
 import { Greska, Naslov, Polje, Ucitavanje } from '../komponente/Ui'
 import { nazivStanja, nazivTipa, ravneKategorije } from '../pomocno/format'
-import { useGradovi, useKategorije } from '../pomocno/kuke'
+import { IzborGrada } from '../komponente/IzborGrada'
+import { useKategorije } from '../pomocno/kuke'
 
 const MAKS_SLIKA = 10
 const MAKS_VELICINA = 5 * 1024 * 1024
@@ -38,7 +39,6 @@ export default function FormaOglasa() {
   const navigacija = useNavigate()
   const toast = useToast()
   const kategorije = useKategorije()
-  const gradovi = useGradovi()
   const [p, setP] = useState<OglasPodaci>(prazan)
   const [definicije, setDefinicije] = useState<DefinicijaAtributa[]>([])
   const [slike, setSlike] = useState<Slika[]>([])
@@ -145,7 +145,7 @@ export default function FormaOglasa() {
     <form onSubmit={posalji} className="mx-auto max-w-3xl space-y-6" noValidate>
       <Naslov>{id ? 'Izmena oglasa' : 'Novi oglas'}</Naslov>
 
-      <section className="kartica space-y-4 p-6">
+      <section className="kartica space-y-4 p-4 sm:p-6">
         <h2 className="font-semibold">Osnovni podaci</h2>
         <Polje oznaka="Naslov" greska={greske.naslov}>
           <input className="unos" maxLength={120} value={p.naslov} onChange={(e) => postavi('naslov', e.target.value)} placeholder="npr. Gradski bicikl Capriolo, veličina M" />
@@ -158,10 +158,7 @@ export default function FormaOglasa() {
             </select>
           </Polje>
           <Polje oznaka="Grad" greska={greske.gradId}>
-            <select className="unos" value={p.gradId || ''} onChange={(e) => postavi('gradId', Number(e.target.value))}>
-              <option value="">-- izaberite grad --</option>
-              {gradovi.map((g) => <option key={g.id} value={g.id}>{g.naziv}</option>)}
-            </select>
+            <IzborGrada vrednost={p.gradId || ''} promeni={(gradId) => postavi('gradId', Number(gradId))} placeholder="Upišite i izaberite grad..." />
           </Polje>
         </div>
         <Polje oznaka="Opis" greska={greske.opis}>
@@ -170,7 +167,7 @@ export default function FormaOglasa() {
         </Polje>
       </section>
 
-      <section className="kartica space-y-4 p-6">
+      <section className="kartica space-y-4 p-4 sm:p-6">
         <h2 className="font-semibold">Cena i stanje</h2>
         <div className="flex flex-wrap gap-2">
           {(Object.keys(nazivTipa) as TipOglasa[]).map((t) => (
@@ -207,7 +204,7 @@ export default function FormaOglasa() {
       </section>
 
       {definicije.length > 0 && (
-        <section className="kartica space-y-4 p-6">
+        <section className="kartica space-y-4 p-4 sm:p-6">
           <h2 className="font-semibold">Detalji za kategoriju</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             {definicije.map((d) => {
@@ -237,7 +234,7 @@ export default function FormaOglasa() {
         </section>
       )}
 
-      <section className="kartica space-y-4 p-6">
+      <section className="kartica space-y-4 p-4 sm:p-6">
         <h2 className="font-semibold">Slike ({slike.length + noveSlike.length}/{MAKS_SLIKA})</h2>
         <p className="text-xs text-slate-500">Prva slika je glavna. JPEG, PNG ili WebP, do 5 MB po slici.</p>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">

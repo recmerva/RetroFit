@@ -30,7 +30,7 @@ function HorizontalniStubici({ stavke }: { stavke: StavkaStatistike[] }) {
   return (
     <ul className="space-y-2" aria-label="Aktivni oglasi po kategorijama">
       {stavke.map((s) => (
-        <li key={s.oznaka} className="group grid grid-cols-[150px_1fr_40px] items-center gap-3 text-sm" title={`${s.oznaka}: ${s.vrednost}`}>
+        <li key={s.oznaka} className="group grid grid-cols-[minmax(0,7rem)_1fr_2.5rem] sm:grid-cols-[150px_1fr_40px] items-center gap-3 text-sm" title={`${s.oznaka}: ${s.vrednost}`}>
           <span className="truncate text-slate-700">{s.oznaka}</span>
           <span className="h-3.5 rounded-sm bg-slate-100">
             <span className="block h-full rounded-r group-hover:opacity-80" style={{ width: `${(s.vrednost / maks) * 100}%`, background: BOJA_SERIJE }} />
