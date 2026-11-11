@@ -71,6 +71,8 @@ npm install
 npm run dev                                # http://localhost:5173
 ```
 
+Aplikacija se otvara na **http://localhost:5173**; pozivi ka `/api` idu kroz Vite proxy do backenda, pa nije potrebno posebno CORS podešavanje.
+
 Konekcioni string je u `backend/RetroFit.API/appsettings.json` (podrazumevano `Server=.` sa Windows autentifikacijom).
 Ručno upravljanje migracijama:
 
